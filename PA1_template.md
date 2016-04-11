@@ -105,6 +105,7 @@ activity$prettyInterval <- sprintf("%04d", activity$interval)
 activity$prettyInterval <- format (strptime(activity$prettyInterval, format = "%H%M"), format = "%H:%M")
 
 meanByInterval <- aggregate(steps~prettyInterval, data=activity, FUN=mean)
+maxSteps = max(meanByInterval$steps)
 highestInterval <- meanByInterval[which.max(meanByInterval$steps),1]
 plot(meanByInterval$steps, type="l", main="Average Steps Taken in Time Interval", axes="False", ylab = "Steps", xlab = "Time")
 axis(2)
@@ -113,7 +114,7 @@ axis(1, at=seq_along(meanByInterval[,1]), labels = meanByInterval$prettyInterval
 
 ![](PA1_template_files/figure-html/AverageDailyPattern-1.png)
 
-The highest 5-minute interval, on average across all days in dataset, that contains the maximum number of steps is 08:35.
+The highest 5-minute interval, on average across all days in dataset, that contains the maximum number of steps is 08:35 with an average of 206.17 steps taken.  
 
 ## Imputing missing values
 
@@ -194,3 +195,6 @@ print(weekendPlot)
 ```
 
 ![](PA1_template_files/figure-html/weekdayWeekendDifference-1.png)
+
+If you've read this far, this Youtube video is possibly relevant:
+https://www.youtube.com/watch?v=gc5icEFHCN4  :)

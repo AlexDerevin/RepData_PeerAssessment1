@@ -189,7 +189,8 @@ levels(activity$weekend) <- c("Weekday", "Weekend")
 #calculate per-interval averages for weekdays and weekends
 weekendMeanByInterval <- aggregate(imputed~interval+weekend, data=activity, FUN=mean)
 #Graph the resulting data
-xyplot (imputed ~interval| weekend, data = weekendMeanByInterval, layout = c(1,2), type = "l")
+weekendPlot <- xyplot (imputed ~interval| weekend, data = weekendMeanByInterval, layout = c(1,2), type = "l")
+print(weekendPlot)
 ```
 
 ![](PA1_template_files/figure-html/weekdayWeekendDifference-1.png)
